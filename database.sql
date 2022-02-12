@@ -8,7 +8,7 @@ CREATE TABLE "tasks" (
 insert into "tasks"
 ("task", "dateAdded") 
 VALUES 
-	('finish weekend assignment', '2-12-2022'),
-	('get haircut', '2-12-2022'),
-	('play with dogs', '2-12-2022'),
-	('maybe shower', '2-12-2022')
+	('finish weekend assignment', '2/12/2022'),
+	('get haircut', '2/12/2022'),
+	('play with dogs', '2/12/2022'),
+	('maybe shower', '2/12/2022')
