@@ -4,7 +4,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
-    let queryText = 'SELECT * FROM "tasks";';
+    let queryText = 'SELECT * FROM "tasks" order by "dateAdded";';
     pool.query(queryText).then(result => {
       // Sends back the results in an object
       res.send(result.rows);
@@ -32,4 +32,23 @@ router.post('/',  (req, res) => {
       });
   });
 
+// TODO - DELETE 
+// Removes a book to show that it has been read
+// Request must include a parameter indicating what book to update - the id
+router.delete('/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log('Delete ID', reqId);
+    let queryText = 'DELETE FROM "tasks" WHERE "id" = $1;'
+    pool.query(queryText, [reqId])
+        .then((result) => {
+            console.log('task deleted');
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('Error making database query', queryText, error);
+            res.sendStatus(500);
+        })
+  })
+  
+  
 module.exports = router;

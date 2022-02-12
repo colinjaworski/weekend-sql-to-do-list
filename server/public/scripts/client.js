@@ -5,10 +5,36 @@ $(document).ready(function(){
   });
   function addClickHandlers() {
     $('#submitBtn').on('click', handleSubmit);
-    // $('#taskList').on('click', '.btn-delete', deleteTask);
+    $('#taskList').on('click', '.btn-delete', deleteTask);
     // $('#taskList').on('click', '.btn-read', updateIsBookRead);
   }
 
+
+function handleSubmit() {
+    console.log('Submit button clicked.');
+    let taskObject = {};
+    taskObject.task = $('#taskToComplete').val();
+    taskObject.dateAdded = $('#dateAdded').val();
+    addNewTask(taskObject);
+  }
+
+// Displays an array of list items to the DOM
+function renderTasks(itemToDo) {
+    $('#taskList').empty();
+  
+    for(let i = 0; i < itemToDo.length; i += 1) {
+      let item = itemToDo[i];
+      // For each item, append a new row to our table
+      $('#taskList').append(`
+        <tr>
+          <td>${item.task}</td>
+          <td>${item.dateAdded}</td>
+          <td>${item.isComplete}</td>
+          <td><button class="btn-delete" data-id=${item.id}>delete</button></td>
+        </tr>
+      `);
+    }
+}
 
 function refreshTasks() {
     $.ajax({
@@ -22,13 +48,6 @@ function refreshTasks() {
     });
   
 }
-function handleSubmit() {
-    console.log('Submit button clicked.');
-    let taskObject = {};
-    taskObject.task = $('#taskToComplete').val();
-    taskObject.dateAdded = $('#dateAdded').val();
-    addNewTask(taskObject);
-  }
   
 function addNewTask(taskToAdd) {
     $.ajax({
@@ -45,20 +64,17 @@ function addNewTask(taskToAdd) {
       });
   }
 
-// Displays an array of list items to the DOM
-function renderTasks(itemToDo) {
-    $('#taskList').empty();
-  
-    for(let i = 0; i < itemToDo.length; i += 1) {
-      let item = itemToDo[i];
-      // For each item, append a new row to our table
-      $('#taskList').append(`
-        <tr>
-          <td>${item.task}</td>
-          <td>${item.dateAdded}</td>
-          <td>${item.isComplete}</td>
-        </tr>
-      `);
-    }
+function deleteTask() {
+    let taskId = $(this).data().id;
+    $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${taskId}`
+    })
+    .then(function(response) {
+        console.log('Deleted it!');
+        refreshTasks();
+    })
+    .catch(function(error) {
+        console.log('Error deleting the thingy', error);
+    })
   }
-  
