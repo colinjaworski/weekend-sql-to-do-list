@@ -8,20 +8,8 @@ $(document).ready(function(){
     // $('#taskList').on('click', '.btn-delete', deleteTask);
     // $('#taskList').on('click', '.btn-read', updateIsBookRead);
   }
-  
-  function handleSubmit() {
-    console.log('Submit button clicked.');
-    let tasks = {};
-    tasks.task = $('#taskToComplete').val();
-    tasks.dateAdded = $('#dateAdded').val();
-    addNewTask();
-  }
-// function addNewTask(itemToDo) {
-//     console.log('new task', itemToDo.task);
-//     // $('#taskList').append(task);
-// }
 
-    // refreshBooks will get all books from the server and render to page
+
 function refreshTasks() {
     $.ajax({
       type: 'GET',
@@ -34,14 +22,36 @@ function refreshTasks() {
     });
   
 }
+function handleSubmit() {
+    console.log('Submit button clicked.');
+    let taskObject = {};
+    taskObject.task = $('#taskToComplete').val();
+    taskObject.dateAdded = $('#dateAdded').val();
+    addNewTask(taskObject);
+  }
+  
+function addNewTask(taskToAdd) {
+    $.ajax({
+      type: 'POST',
+      url: '/tasks',
+      data: taskToAdd,
+      }).then(function(response) {
+        console.log('Response from server.', response);
+        refreshTasks();
+        renderTasks(taskToAdd);
+      }).catch(function(error) {
+        console.log('Error in POST', error)
+        alert('Unable to eat taco at this time. Please try again later.');
+      });
+  }
 
-// Displays an array of books to the DOM
+// Displays an array of list items to the DOM
 function renderTasks(itemToDo) {
     $('#taskList').empty();
   
     for(let i = 0; i < itemToDo.length; i += 1) {
       let item = itemToDo[i];
-      // For each book, append a new row to our table
+      // For each item, append a new row to our table
       $('#taskList').append(`
         <tr>
           <td>${item.task}</td>
