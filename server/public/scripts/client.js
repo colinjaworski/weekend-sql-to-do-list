@@ -66,7 +66,7 @@ function addNewTask(taskToAdd) {
       url: '/tasks',
       data: taskToAdd,
       }).then(function(response) {
-        console.log('Response from server.', response);
+        // console.log('Response from server.', response);
         refreshTasks();
         renderTasks(taskToAdd);
       }).catch(function(error) {
@@ -76,6 +76,7 @@ function addNewTask(taskToAdd) {
   }
 function deleteTask() {
     let taskId = $(this).data().id;
+    if ( confirm ('Ope! Did you mean to delete this?')){
     $.ajax({
         method: 'DELETE',
         url: `/tasks/${taskId}`
@@ -87,7 +88,7 @@ function deleteTask() {
     .catch(function(error) {
         console.log('Error deleting the thingy', error);
     })
-  }
+  }}
 function updateIsTaskComplete() {
     let taskId = $(this).data().id;
     let taskStatus = $(this).data(); //true
