@@ -6,8 +6,9 @@ $(document).ready(function(){
 function addClickHandlers() {
     $('#submitBtn').on('click', handleSubmit);
     $('#taskList').on('click', '.btn-delete', deleteTask);
-    $('#taskList').on('click', '.btn-update', updateIsTaskComplete,);
-  }
+    $('#taskList').on('click', '.btn-update', updateIsTaskComplete);
+    $('#supButton').on('mouseover', hoverButton);
+}
 function handleSubmit() {
     if ($('#dateAdded').val() && $('#taskToComplete').val()) {
         let taskObject = {};
@@ -73,7 +74,7 @@ function addNewTask(taskToAdd) {
         console.log('Error in POST', error)
         alert('Unable to eat taco at this time. Please try again later.');
       });
-  }
+}
 function deleteTask() {
     let taskId = $(this).data().id;
     if ( confirm ('Ope! Did you mean to delete this?')){
@@ -88,7 +89,7 @@ function deleteTask() {
     .catch(function(error) {
         console.log('Error deleting the thingy', error);
     })
-  }}
+}}
 function updateIsTaskComplete() {
     let taskId = $(this).data().id;
     let taskStatus = $(this).data(); //true
@@ -103,4 +104,11 @@ function updateIsTaskComplete() {
     .catch(function(error) {
         console.log('OPE, error updating the tasks', error);
     })    
+}
+function hoverButton() {
+    // console.log('its working');
+    $(this).animate({
+        'top': Math.random() * window.innerHeight + "px",
+        'left': Math.random() * window.innerWidth + "px"
+      }, "medium");
 }
