@@ -10,10 +10,12 @@ function addClickHandlers() {
   }
 function handleSubmit() {
     if ($('#dateAdded').val() && $('#taskToComplete').val()) {
-    let taskObject = {};
-    taskObject.task = $('#taskToComplete').val();
-    taskObject.dateAdded = $('#dateAdded').val();
-    addNewTask(taskObject);
+        let taskObject = {};
+        taskObject.task = $('#taskToComplete').val();
+        taskObject.dateAdded = $('#dateAdded').val();
+        $('#taskToComplete').val('');
+        $('#dateAdded').val('');
+        addNewTask(taskObject);
     }
 }
 function renderTasks(itemToDo) {
