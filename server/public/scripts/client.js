@@ -32,7 +32,7 @@ function renderTasks(itemToDo) {
           <td>${item.task}</td>
           <td>${item.dateAdded}</td>
           <td>${item.isComplete}</td>
-          <td><button class="btn-update" data-id=${item.id}>update</button></td>
+          <td><button class="btn-update" data-id=${item.id}>✔️</button></td>
           <td><button class="btn-delete" data-id=${item.id}>delete</button></td>
         </tr>
       `);
@@ -42,8 +42,8 @@ function renderTasks(itemToDo) {
           <td>${item.task}</td>
           <td>${item.dateAdded}</td>
           <td>${item.isComplete}</td>
-          <td><button class="btn-update" data-id=${item.id}>update</button></td>
-          <td><button class="btn-delete" data-id=${item.id}>delete</button></td>
+          <td><button class="btn-update" data-id=${item.id}>Complete</button></td>
+          <td><button class="btn-delete" data-id=${item.id}>Delete</button></td>
         </tr>
       `);
     }

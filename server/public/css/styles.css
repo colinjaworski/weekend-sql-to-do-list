@@ -1,19 +1,24 @@
 #title {
-    color:rgb(35, 34, 148);
+    color:rgb(25, 22, 150);
     text-align: center;
+    font-weight: bold;
+    font-family: sans-serif;
 }
 #true {
     text-decoration: line-through;
-    background-color: rgba(255, 0, 0, 0.377)
+    background-color: rgba(255, 0, 0, 0.288)
 }
 table {
     border-collapse: collapse;
     table-layout: auto; width: 100%;
-    background-color: rgba(46, 139, 86, 0.575);
+    background-color: rgba(46, 139, 86, 0.281);
 }
 
 th, td {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 18px;
 }
 
 .headers{
@@ -23,7 +28,7 @@ th, td {
 main {
     position: absolute;
     left: 120px;
-    background-color: rgba(46, 139, 86, 0.575);
+    background-color: rgba(46, 139, 86, 0.486);
     border-radius: 6px;
 }
 body {
@@ -40,12 +45,13 @@ button, input {
 }
 .btn-update, #submitBtn {
     background-color: rgba(244, 165, 96, 0.733);
+   
 }
 .btn-delete {
     background-color:rgb(250, 109, 109)
 }
 input {
-    background-color:rgba(250, 197, 150, 0.562);
+    background-color:rgba(253, 240, 228, 0.911);
     /* color: turquoise; */
 }
 
