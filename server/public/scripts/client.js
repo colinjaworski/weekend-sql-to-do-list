@@ -1,13 +1,13 @@
 $(document).ready(function(){
     addClickHandlers();
     refreshTasks();
-  });
-
+    const myTimeout = setTimeout(appendBee, 3000);
+});
 function addClickHandlers() {
     $('#submitBtn').on('click', handleSubmit);
     $('#taskList').on('click', '.btn-delete', deleteTask);
     $('#taskList').on('click', '.btn-update', updateIsTaskComplete);
-    $('#supButton').on('mouseover', hoverButton);
+    $('#taskList').on('mouseover', '#bee', hoverButton);
 }
 function handleSubmit() {
     if ($('#dateAdded').val() && $('#taskToComplete').val()) {
@@ -104,6 +104,9 @@ function updateIsTaskComplete() {
     .catch(function(error) {
         console.log('OPE, error updating the tasks', error);
     })    
+}
+function appendBee() {
+    $('#taskList').append(`<button id="bee">🐝</button>`);
 }
 function hoverButton() {
     // console.log('its working');
