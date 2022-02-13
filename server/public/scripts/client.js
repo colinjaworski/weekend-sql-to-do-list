@@ -55,7 +55,6 @@ function refreshTasks() {
       url: '/tasks'
     }).then(function(response) {
         renderTasks(response);
-    //   console.log(response);
     }).catch(function(error){
       console.log('error in GET', error);
     });

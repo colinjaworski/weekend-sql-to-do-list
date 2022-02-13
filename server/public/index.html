@@ -12,41 +12,37 @@
 
 <body>
   <header>
-    <h1>Task Manager</h1>
+    <h1></h1>
   </header>
   <main>
     <section>
-      <h3>Add a new task</h3>
-      <label></label><input placeholder="Things you'll probably not do"type="text" name="" value="" id="taskToComplete" size="50">
+      <h1 id= "title">*Add a new task*</h1>
+      <label></label><input placeholder="Things you probably won't do"type="text" name="" value="" id="taskToComplete" size="50"><label></label><input type="date" name="" value="" id="dateAdded" size="50"><button type="button" id="submitBtn">Submit</button>
       <br />
-      <label></label><input type="date" name="" value="" id="dateAdded" size="50">
+      
       <br />
-      <button type="button" id="submitBtn">Submit</button>
+      
     </section>
     <section>
       <div>
-        <h3>Task List</h3>
         <table>
           <thead>
         <tr>
-              <th>Task to do</th>
-              <th>Date added</th>
-              <th>Is Complete?</th>
+              <th class=headers>List of things</th>
+              <th class=headers>Date added</th>
+              <th class=headers>Complete?</th>
               
             </tr>
-           
           </thead>
-          <tbody id="taskList">
-            
-          </tbody>
+          <tbody id="taskList"></tbody>
         </table>
       </div>
     </section>
   </main>
   <footer>
-      <div>
-      </div>
+
   </footer>
+  
 </body>
 
 </html>

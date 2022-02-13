@@ -1,7 +1,51 @@
-h1 {
-    color: blue;
+#title {
+    color:rgb(35, 34, 148);
+    text-align: center;
 }
-
 #true {
     text-decoration: line-through;
+    background-color: rgba(255, 0, 0, 0.377)
 }
+table {
+    border-collapse: collapse;
+    table-layout: auto; width: 100%;
+    background-color: rgba(46, 139, 86, 0.575);
+}
+
+th, td {
+    border: 1px solid black;
+}
+
+.headers{
+    width: fit-content;
+}
+
+main {
+    position: absolute;
+    left: 120px;
+    background-color: rgba(46, 139, 86, 0.575);
+    border-radius: 6px;
+}
+body {
+    background-image: Url(https://static.vecteezy.com/system/resources/previews/001/879/355/non_2x/back-to-school-notepad-cute-cartoon-illustration-vector.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -620px;
+}
+
+/* buttons----& inputs----------------------------------------- */
+
+button, input {
+    border-radius: 6px;
+}
+.btn-update, #submitBtn {
+    background-color: rgba(244, 165, 96, 0.733);
+}
+.btn-delete {
+    background-color:rgb(250, 109, 109)
+}
+input {
+    background-color:rgba(250, 197, 150, 0.562);
+    /* color: turquoise; */
+}
+
