@@ -6,9 +6,9 @@ $(document).ready(function(){
   function addClickHandlers() {
     $('#submitBtn').on('click', handleSubmit);
     $('#taskList').on('click', '.btn-delete', deleteTask);
-    // $('#taskList').on('click', '.btn-read', updateIsBookRead);
+    $('#taskList').on('click', '.btn-update', updateIsTaskComplete);
   }
-
+  
 
 function handleSubmit() {
     console.log('Submit button clicked.');
@@ -30,7 +30,10 @@ function renderTasks(itemToDo) {
           <td>${item.task}</td>
           <td>${item.dateAdded}</td>
           <td>${item.isComplete}</td>
+          <td><button class="btn-update" data-id=${item.id}>update</button></td>
           <td><button class="btn-delete" data-id=${item.id}>delete</button></td>
+        
+          
         </tr>
       `);
     }
@@ -78,3 +81,19 @@ function deleteTask() {
         console.log('Error deleting the thingy', error);
     })
   }
+
+function updateIsTaskComplete() {
+    let taskId = $(this).data().id;
+    $.ajax({
+        method: 'PUT',
+        url: `/tasks/${taskId}`
+    })
+    .then(function(response) {
+        console.log('updated it!');
+        refreshTasks();
+    })
+    .catch(function(error) {
+        console.log('OPE, error updating the tasks', error);
+    })    
+}
+

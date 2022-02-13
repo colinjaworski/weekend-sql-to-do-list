@@ -14,8 +14,7 @@ router.get('/', (req, res) => {
       res.sendStatus(500);
     });
   });
-// Adds a new book to the list of awesome reads
-// Request body must be a book object with a title and author.
+
 router.post('/',  (req, res) => {
     let taco = req.body;
     console.log(`Adding new todo`, taco);
@@ -32,9 +31,6 @@ router.post('/',  (req, res) => {
       });
   });
 
-// TODO - DELETE 
-// Removes a book to show that it has been read
-// Request must include a parameter indicating what book to update - the id
 router.delete('/:id', (req, res) => {
     let reqId = req.params.id;
     console.log('Delete ID', reqId);
@@ -49,6 +45,19 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(500);
         })
   })
-  
+  router.put('/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log('updating id', reqId);
+    let queryText = 'UPDATE "tasks" SET "isComplete" = true WHERE "id" = $1';
+    pool.query(queryText, [reqId])
+        .then((result) => {
+            console.log('task was updated');
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('Error making database query', queryText, error);
+            res.sendStatus(500);
+        })
+  })
   
 module.exports = router;
