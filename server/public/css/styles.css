@@ -2,3 +2,6 @@ h1 {
     color: blue;
 }
 
+#true {
+    text-decoration: line-through;
+}
