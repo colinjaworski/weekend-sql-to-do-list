@@ -18,4 +18,5 @@ VALUES
 	('Go grocery shopping', '2022-02-02'),
 	('Call a friend', '2022-01-13'),
 	('Buy a cat', 'Nope'),
+	('Do something about these bees!', '2022-02-02'),
 
