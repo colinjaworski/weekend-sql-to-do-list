@@ -53,6 +53,7 @@ function refreshTasks() {
       type: 'GET',
       url: '/tasks'
     }).then(function(response) {
+        const myTimeout = setTimeout(appendBee, 3000);
         renderTasks(response);
     }).catch(function(error){
       console.log('error in GET', error);
